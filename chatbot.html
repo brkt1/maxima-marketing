@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatbot</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    .chatbot-open-button {
+      background-color: blue;
+      color: white;
+      padding: 5px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .chatbot {
+      display: none;
+      border: 1px solid black;
+    }
+
+    .chatbot-messages {
+      list-style-type: none;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <button type="button" class="btn btn-primary chatbot-open-button" tabindex="0" title="Open Chatbot">Open Chatbot</button>
+
+        <div class="chatbot">
+          <div class="chatbot-header">
+            <h3 class="chatbot-title">Chatbot</h3>
+          </div>
+          <div class="chatbot-body">
+            <ul class="chatbot-messages">
+              <li class="user-message">Hello!</li>
+              <li class="bot-message">Hi! How can I help you today?</li>
+            </ul>
+          </div>
+          <div class="chatbot-footer">
+            <input type="text" class="chatbot-input" tabindex="1" placeholder="Type your message here..." title="Enter your message here and press send to send it to the chatbot." />
+            <button type="button" class="chatbot-send-button" style="background-color: blue; color: white;" title="Send your message to the chatbot.">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const chatbotAPIUrl = 'https://example.com/chatbot/api/send-message';
+    const chatbotAPIKey = 'YOUR_API_KEY';
+
+    $('.chatbot-open-button').on('click', function() {
+      $('.chatbot').css('display', 'block');
+    });
+
+    const chatbotInput = $('.chatbot-input');
+    const chatbotSendButton = $('.chatbot-send-button');
+    const chatbotMessages = $('.chatbot-messages');
+
+    chatbotSendButton.on('click', async function(event) {
+      event.preventDefault();
+
+      const userMessage = chatbotInput.val();
+      chatbotMessages.append(`<li class="user-message">${userMessage}</li>`);
+
+      try {
+        const chatbotResponse = await sendBotMessage(userMessage);
+
+        if (chatbotResponse.message) {
+          chatbotMessages.append(`<li class="bot-message">${chatbotResponse.message}</li>`);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+
+      chatbotInput.val('');
+    });
+
+    async function sendBotMessage(userMessage) {
+      const response = await fetch(chatbotAPIUrl, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${chatbotAPIKey}`,
+        },
+        body: JSON.stringify({
+          message: userMessage,
+        }),
+      });
+
+      return response.json();
+    }
+  </script>
+</body>
+</html>
