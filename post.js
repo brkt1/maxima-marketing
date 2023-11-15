@@ -137,6 +137,17 @@ let products = [
         cm:"1000 sqft",
         bed : "3 Bed",
         bath : "2 Bath"
+        },
+        {   typefor_button:"home",
+        image : "img/property-1.jpg" ,
+        post_catagory : "Home",
+        post_type : "Villa",
+        price : 1500,
+        discripsion : "Golden Urban House For Sel",
+        direction:"Betel",
+        cm:"1000 sqft",
+        bed : "3 Bed",
+        bath : "2 Bath"
         }
 ];
 

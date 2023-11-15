@@ -500,11 +500,26 @@ border-right: 1px dashed --lightgold!important;
     }
   
     iframe{
-        width: 330px;
+        width: 310px;
         height: 200px;
     }
 
+    html{
+        display: flex;
+        max-width: 100%;
+        margin: 0px;
+    }
+    body{
+        margin: 0px;
+        max-width: 100%;
+    }
   
 }
 
 .img-fluid{width: fit-content;}
+@media (max-width: 575px){
+    .T-icon{
+        display: none;
+        
+    }
+}
