@@ -26,6 +26,7 @@ The project utilizes modern web development technologies including HTML5, CSS3, 
 - **Font Awesome**
 
 
+   ![Screenshot 2024-07-03 7 08 23 AM](https://github.com/brkt1/maxima-marketing/assets/134799825/99b56e7c-8695-4b0d-b213-2776d8fb37d2)
 
 ## How to Run
 
@@ -33,4 +34,3 @@ The project utilizes modern web development technologies including HTML5, CSS3, 
    ```bash
    git clone https://github.com/your-username/maxima-marketing-plc.git
 
-   ![Screenshot 2024-07-03 7 08 23 AM](https://github.com/brkt1/maxima-marketing/assets/134799825/99b56e7c-8695-4b0d-b213-2776d8fb37d2)
